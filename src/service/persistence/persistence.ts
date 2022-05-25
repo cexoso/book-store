@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+// 浏览器连接层，无法测试
 import { injectable } from "inversify";
 import { IPersistence } from "./index";
 

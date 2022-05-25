@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "test": "mocha --config .mocharc.js"
+    "test": "mocha --config .mocharc.js",
+    "coverage": "nyc npm run test"
   },
   "dependencies": {
     "@types/sinon": "^10.0.11",
@@ -26,6 +27,7 @@
     "@vitejs/plugin-vue-jsx": "^1.3.10",
     "chai": "^4.3.6",
     "mocha": "^10.0.0",
+    "nyc": "^15.1.0",
     "qs": "^6.10.3",
     "ts-node": "^10.8.0",
     "typescript": "^4.5.4",
