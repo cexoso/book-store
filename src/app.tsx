@@ -1,7 +1,14 @@
 import { defineComponent } from "vue";
+import { createIOC } from "./create-ioc";
 
 export const App = defineComponent({
+  provide() {
+    const ioc = createIOC();
+    return {
+      ioc,
+    };
+  },
   setup() {
-    return () => <div class="">123</div>;
+    return () => <router-view />;
   },
 });

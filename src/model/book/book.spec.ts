@@ -8,6 +8,7 @@ describe("Book", () => {
     expect(book).has.property("name", "明朝那些事");
     expect(book.state.value).eq("已卖完", "默认为很售完");
     book.setCount(100);
+    expect(book.count.value).eq(100, "设置值后依然会保留值");
     expect(book.state.value).eq("在售", "当有 count 时，状态为在售");
   });
 });
