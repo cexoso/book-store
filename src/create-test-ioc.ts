@@ -5,6 +5,10 @@ import { Persistence as NodePersistence } from "./service/persistence/persistenc
 
 export function createTestIOC() {
   const container = createIOC();
-  container.rebind<IPersistence>(Persistence).to(NodePersistence).inSingletonScope();
+  container
+    .rebind<IPersistence>(Persistence)
+    .to(NodePersistence)
+    .inSingletonScope();
+
   return container;
 }
