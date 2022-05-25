@@ -15,6 +15,15 @@ export class StoreController {
   public nextPage = 0;
   private pageCount = 10;
 
+  public buyAll(id: string) {
+    const book = this.bookStore.getBookById(id);
+    if (!book) {
+      return false;
+    }
+    book.setCount(0);
+    return true;
+  }
+
   public reset() {
     this.bookIdList.value = [];
     this.nextPage = 0;

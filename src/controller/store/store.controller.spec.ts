@@ -2,6 +2,7 @@ import { expect } from "chai";
 import { createTestIOC } from "../../create-test-ioc";
 import { StoreController } from "./store.controller";
 import { BookStore } from "../../model/book-store/book-store";
+import { BookForSell } from "../../model/book/book";
 import type { IRequest } from "../../service/request";
 import { Request } from "../../service/request";
 import { stub } from "sinon";
@@ -246,6 +247,26 @@ describe("StoreController", () => {
         "8",
         "9",
       ]);
+    });
+  });
+
+  describe("store controller buy all", () => {
+    it("buyAll 传递一个 id, 会买完所有的书", () => {
+      const ioc = createTestIOC();
+      const storeController = ioc.get(StoreController);
+      const bookStore = ioc.get(BookStore);
+
+      const book = new BookForSell("0");
+      bookStore.putOnTheShelf(book);
+
+      book.name = "xxx";
+      book.setCount(50);
+
+      expect(book.state.value).eq("在售");
+      const result = storeController.buyAll("0");
+      expect(result).eq(true);
+      expect(book.state.value).eq("已卖完");
+      expect(storeController.buyAll("1")).eq(false);
     });
   });
 });
