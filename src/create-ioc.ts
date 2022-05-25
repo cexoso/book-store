@@ -6,6 +6,8 @@ import { Persistence as BrowserPersistence } from "./service/persistence/persist
 import { Request, IRequest } from "./service/request";
 import axios from "axios";
 
+import { StoreController } from "./controller/store/store.controller";
+
 export function createIOC() {
   const container = new Container();
   container.bind(BookStore).toSelf().inSingletonScope();
@@ -19,6 +21,7 @@ export function createIOC() {
     .bind<IRequest>(Request)
     .toDynamicValue(() => axios)
     .inSingletonScope();
+  container.bind(StoreController).toSelf().inSingletonScope();
 
   return container;
 }

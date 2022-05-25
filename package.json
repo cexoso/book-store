@@ -9,9 +9,11 @@
     "test": "mocha --config .mocharc.js"
   },
   "dependencies": {
+    "@types/sinon": "^10.0.11",
     "axios": "^0.27.2",
     "inversify": "^6.0.1",
     "reflect-metadata": "^0.1.13",
+    "sinon": "^14.0.0",
     "vue": "^3.2.25"
   },
   "devDependencies": {
